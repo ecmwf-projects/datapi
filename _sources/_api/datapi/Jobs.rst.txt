@@ -1,0 +1,45 @@
+datapi.Jobs
+===========
+
+.. py:class:: datapi.Jobs
+
+   Bases: :py:obj:`ApiResponsePaginated`
+
+
+   A class to interact with submitted jobs.
+
+
+   .. py:property:: json
+      :type: Any
+
+
+      Content of the response.
+
+
+   .. py:property:: next
+      :type: Self | None
+
+
+      Next page.
+
+
+   .. py:property:: prev
+      :type: Self | None
+
+
+      Previous page.
+
+
+   .. py:property:: request_uids
+      :type: list[str]
+
+
+      List of request UIDs.
+
+
+   .. py:property:: url
+      :type: str
+
+
+      URL.
+

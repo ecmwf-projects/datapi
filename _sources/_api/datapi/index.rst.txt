@@ -1,0 +1,36 @@
+datapi
+======
+
+.. py:module:: datapi
+
+.. autoapi-nested-parse::
+
+   ESEE Data Stores API Python Client.
+
+
+
+Classes
+-------
+
+.. toctree::
+   :hidden:
+
+   /_api/datapi/ApiClient
+   /_api/datapi/Collection
+   /_api/datapi/Collections
+   /_api/datapi/Jobs
+   /_api/datapi/Process
+   /_api/datapi/Remote
+   /_api/datapi/Results
+
+.. autoapisummary::
+
+   datapi.ApiClient
+   datapi.Collection
+   datapi.Collections
+   datapi.Jobs
+   datapi.Process
+   datapi.Remote
+   datapi.Results
+
+

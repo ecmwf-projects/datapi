@@ -1,0 +1,66 @@
+datapi.Process
+==============
+
+.. py:class:: datapi.Process
+
+   Bases: :py:obj:`ApiResponse`
+
+
+   A class to interact with a process.
+
+
+   .. py:method:: apply_constraints(**request)
+
+      Apply constraints to the parameters in a request.
+
+      :param \*\*request: Request parameters.
+      :type \*\*request: :class:`Any`
+
+      :returns: Dictionary of valid values.
+      :rtype: :class:`dict[str,Any]`
+
+
+
+   .. py:method:: estimate_costs(**request)
+
+      Estimate costs of the parameters in a request.
+
+      :param \*\*request: Request parameters.
+      :type \*\*request: :class:`Any`
+
+      :returns: Dictionary of estimated costs.
+      :rtype: :class:`dict[str,Any]`
+
+
+
+   .. py:method:: submit(**request)
+
+      Submit a request.
+
+      :param \*\*request: Request parameters.
+      :type \*\*request: :class:`Any`
+
+      :rtype: :class:`datapi.Remote`
+
+
+
+   .. py:property:: id
+      :type: str
+
+
+      Process ID.
+
+
+   .. py:property:: json
+      :type: Any
+
+
+      Content of the response.
+
+
+   .. py:property:: url
+      :type: str
+
+
+      URL.
+

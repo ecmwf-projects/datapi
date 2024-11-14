@@ -1,0 +1,73 @@
+datapi.Collection
+=================
+
+.. py:class:: datapi.Collection
+
+   Bases: :py:obj:`datapi.processing.ApiResponse`
+
+
+   A class to interact with a catalogue collection.
+
+
+   .. py:property:: bbox
+      :type: tuple[float, float, float, float]
+
+
+      Bounding box of the collection (W, S, E, N).
+
+
+   .. py:property:: begin_datetime
+      :type: datetime.datetime | None
+
+
+      Begin datetime of the collection.
+
+
+   .. py:property:: constraints
+      :type: list[dict[str, Any]]
+
+
+      Constraints JSON.
+
+
+   .. py:property:: end_datetime
+      :type: datetime.datetime | None
+
+
+      End datetime of the collection.
+
+
+   .. py:property:: form
+      :type: list[dict[str, Any]]
+
+
+      Form JSON.
+
+
+   .. py:property:: id
+      :type: str
+
+
+      Collection ID.
+
+
+   .. py:property:: json
+      :type: Any
+
+
+      Content of the response.
+
+
+   .. py:property:: process
+      :type: datapi.Process
+
+
+      Collection process.
+
+
+   .. py:property:: url
+      :type: str
+
+
+      URL.
+

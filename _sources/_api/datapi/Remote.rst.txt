@@ -1,0 +1,91 @@
+datapi.Remote
+=============
+
+.. py:class:: datapi.Remote
+
+   A class to interact with a submitted job.
+
+
+   .. py:method:: delete()
+
+      Delete job.
+
+      :returns: Content of the response.
+      :rtype: :class:`dict[str,Any]`
+
+
+
+   .. py:method:: download(target = None)
+
+      Download the results.
+
+      :param target: Target path. If None, download to the working directory.
+      :type target: :class:`str` or :obj:`None`
+
+      :returns: Path to the retrieved file.
+      :rtype: :class:`str`
+
+
+
+   .. py:property:: collection_id
+      :type: str
+
+
+      Collection ID.
+
+
+   .. py:property:: creation_datetime
+      :type: datetime.datetime
+
+
+      Creation datetime of the job.
+
+
+   .. py:property:: end_datetime
+      :type: datetime.datetime | None
+
+
+      End datetime of the job. If None, job has not finished.
+
+
+   .. py:property:: json
+      :type: dict[str, Any]
+
+
+      Content of the response.
+
+
+   .. py:property:: request
+      :type: dict[str, Any]
+
+
+      Request parameters.
+
+
+   .. py:property:: request_uid
+      :type: str
+
+
+      Request UID.
+
+
+   .. py:property:: results_ready
+      :type: bool
+
+
+      Check if results are ready.
+
+
+   .. py:property:: start_datetime
+      :type: datetime.datetime | None
+
+
+      Start datetime of the job. If None, job has not started.
+
+
+   .. py:property:: status
+      :type: str
+
+
+      Request status.
+
