@@ -7,11 +7,13 @@ Technical documentation: https://ecmwf-projects.github.io/datapi/
 ## Installation
 
 Install with conda:
+
 ```
 $ conda install -c conda-forge datapi
 ```
 
 Install with pip:
+
 ```
 $ pip install datapi
 ```
