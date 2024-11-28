@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>datapi &#8212; datapi 0.1.0 documentation</title>
+    <title>datapi &#8212; datapi 0.1.1 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/documentation_options.js?v=a58bc63e"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'README';</script>
@@ -49,7 +49,7 @@
     <link rel="prev" title="Welcome to datapi’s documentation!" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.1.0" />
+  <meta name="docsearch:version" content="0.1.1" />
   </head>
   
   
@@ -111,7 +111,7 @@
   
   
   
-    <p class="title logo__title">datapi 0.1.0 documentation</p>
+    <p class="title logo__title">datapi 0.1.1 documentation</p>
   
 </a></div>
     
@@ -306,6 +306,17 @@
 <h1>datapi<a class="headerlink" href="#datapi" title="Link to this heading">#</a></h1>
 <p>ECMWF Software EnginE (ESEE) Data Stores API Python Client.</p>
 <p>Technical documentation: https://ecmwf-projects.github.io/datapi/</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>Install with conda:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge datapi
+</pre></div>
+</div>
+<p>Install with pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install datapi
+</pre></div>
+</div>
+</section>
 <section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">ApiClient</span></code> requires the <code class="docutils literal notranslate"><span class="pre">url</span></code> to the API root and a valid API <code class="docutils literal notranslate"><span class="pre">key</span></code>. You can also set the <code class="docutils literal notranslate"><span class="pre">DATAPI_URL</span></code> and <code class="docutils literal notranslate"><span class="pre">DATAPI_KEY</span></code> environment variables, or use a configuration file.
@@ -468,6 +479,7 @@ key: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-for-developers-contributors">Workflow for developers/contributors</a></li>
