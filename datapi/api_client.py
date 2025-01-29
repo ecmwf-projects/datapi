@@ -161,14 +161,16 @@ class ApiClient:
         """
         return self._profile_api.accept_licence(licence_id, revision=revision)
 
-    def apply_constraints(self, collection_id: str, **request: Any) -> dict[str, Any]:
+    def apply_constraints(
+        self, collection_id: str, request: dict[str, Any]
+    ) -> dict[str, Any]:
         """Apply constraints to the parameters in a request.
 
         Parameters
         ----------
         collection_id: str
             Collection ID (e.g., ``"projections-cmip6"``).
-        **request: Any
+        request: dict[str,Any]
             Request parameters.
 
         Returns
@@ -176,7 +178,7 @@ class ApiClient:
         dict[str,Any]
             Dictionary of valid values.
         """
-        return self.get_process(collection_id).apply_constraints(**request)
+        return self.get_process(collection_id).apply_constraints(request)
 
     def check_authentication(self) -> dict[str, Any]:
         """Verify authentication.
@@ -210,14 +212,14 @@ class ApiClient:
         """
         return self.get_remote(request_uid).download(target)
 
-    def estimate_costs(self, collection_id: str, **request: Any) -> dict[str, Any]:
+    def estimate_costs(self, collection_id: str, request: Any) -> dict[str, Any]:
         """Estimate costs of the parameters in a request.
 
         Parameters
         ----------
         collection_id: str
             Collection ID (e.g., ``"projections-cmip6"``).
-        **request: Any
+        request: dict[str,Any]
             Request parameters.
 
         Returns
@@ -225,7 +227,7 @@ class ApiClient:
         dict[str,Any]
             Dictionary of estimated costs.
         """
-        return self.get_process(collection_id).estimate_costs(**request)
+        return self.get_process(collection_id).estimate_costs(request)
 
     def get_accepted_licences(
         self,
@@ -402,8 +404,8 @@ class ApiClient:
     def retrieve(
         self,
         collection_id: str,
+        request: dict[str, Any],
         target: str | None = None,
-        **request: Any,
     ) -> str:
         """Submit a request and retrieve the results.
 
@@ -413,7 +415,7 @@ class ApiClient:
             Collection ID (e.g., ``"projections-cmip6"``).
         target: str or None
             Target path. If None, download to the working directory.
-        **request: Any
+        request: dict[str,Any]
             Request parameters.
 
         Returns
@@ -421,26 +423,26 @@ class ApiClient:
         str
             Path to the retrieved file.
         """
-        return self.submit(collection_id, **request).download(target)
+        return self.submit(collection_id, request).download(target)
 
-    def submit(self, collection_id: str, **request: Any) -> datapi.Remote:
+    def submit(self, collection_id: str, request: dict[str, Any]) -> datapi.Remote:
         """Submit a request.
 
         Parameters
         ----------
         collection_id: str
             Collection ID (e.g., ``"projections-cmip6"``).
-        **request: Any
+        request: dict[str,Any]
             Request parameters.
 
         Returns
         -------
         datapi.Remote
         """
-        return self._retrieve_api.submit(collection_id, **request)
+        return self._retrieve_api.submit(collection_id, request)
 
     def submit_and_wait_on_results(
-        self, collection_id: str, **request: Any
+        self, collection_id: str, request: dict[str, Any]
     ) -> datapi.Results:
         """Submit a request and wait for the results to be ready.
 
@@ -448,11 +450,11 @@ class ApiClient:
         ----------
         collection_id: str
             Collection ID (e.g., ``"projections-cmip6"``).
-        **request: Any
+        request: dict[str,Any]
             Request parameters.
 
         Returns
         -------
         datapi.Results
         """
-        return self._retrieve_api.submit(collection_id, **request).make_results()
+        return self._retrieve_api.submit(collection_id, request).make_results()

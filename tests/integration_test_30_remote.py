@@ -17,7 +17,7 @@ does_not_raise = contextlib.nullcontext
 
 @pytest.fixture
 def remote(api_anon_client: ApiClient) -> Remote:
-    return api_anon_client.submit("test-adaptor-dummy", size=1)
+    return api_anon_client.submit("test-adaptor-dummy", {"size": 1})
 
 
 def test_remote_delete(remote: Remote) -> None:
@@ -60,7 +60,7 @@ def test_remote_status(remote: Remote) -> None:
 
 
 def test_remote_failed(api_anon_client: ApiClient) -> None:
-    remote = api_anon_client.submit("test-adaptor-dummy", format="foo")
+    remote = api_anon_client.submit("test-adaptor-dummy", {"format": "foo"})
     with pytest.raises(HTTPError, match="400 Client Error: Bad Request"):
         remote.download()
     assert remote.status == "failed"
@@ -82,7 +82,7 @@ def test_remote_cleanup(
     client = ApiClient(
         url=api_root_url, key=api_anon_key, cleanup=cleanup, maximum_tries=0
     )
-    remote = client.submit("test-adaptor-dummy")
+    remote = client.submit("test-adaptor-dummy", {})
     request_uid = remote.request_uid
     del remote
 
@@ -92,11 +92,8 @@ def test_remote_cleanup(
 
 
 def test_remote_datetimes(api_anon_client: ApiClient) -> None:
-    remote = api_anon_client.submit(
-        "test-adaptor-dummy",
-        elapsed=1,
-        _timestamp=datetime.datetime.now().isoformat(),
-    )
+    request = {"elapsed": 1, "_timestamp": datetime.datetime.now().isoformat()}
+    remote = api_anon_client.submit("test-adaptor-dummy", request)
     assert remote.results_ready is False
     assert isinstance(remote.creation_datetime, datetime.datetime)
     assert remote.end_datetime is None
