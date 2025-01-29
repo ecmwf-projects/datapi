@@ -413,10 +413,10 @@ class ApiClient:
         ----------
         collection_id: str
             Collection ID (e.g., ``"projections-cmip6"``).
-        target: str or None
-            Target path. If None, download to the working directory.
         request: dict[str,Any]
             Request parameters.
+        target: str or None
+            Target path. If None, download to the working directory.
 
         Returns
         -------
