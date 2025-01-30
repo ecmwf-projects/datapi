@@ -1,0 +1,188 @@
+datapi.ApiClient
+================
+
+.. py:class:: datapi.ApiClient
+
+   A client to interact with the ESEE Data Stores.
+
+   :param url: API URL. If None, infer from DATAPI_URL or DATAPI_RC.
+   :type url: :class:`str` or :obj:`None`, *default*: :obj:`None`
+   :param key: API Key. If None, infer from DATAPI_KEY or DATAPI_RC.
+   :type key: :class:`str` or :obj:`None`, *default*: :obj:`None`
+   :param verify: Whether to verify the TLS certificate at the remote end.
+   :type verify: :class:`bool`, *default*: :obj:`True`
+   :param timeout: How many seconds to wait for the server to send data, as a float, or a (connect, read) tuple.
+   :type timeout: :class:`float` or :class:`tuple[float,float]`, *default*: ``60``
+   :param progress: Whether to display the progress bar during download.
+   :type progress: :class:`bool`, *default*: :obj:`True`
+   :param cleanup: Whether to delete requests after completion.
+   :type cleanup: :class:`bool`, *default*: :obj:`False`
+   :param sleep_max: Maximum time to wait (in seconds) while checking for a status change.
+   :type sleep_max: :class:`float`, *default*: ``120``
+   :param retry_after: Time to wait (in seconds) between retries.
+   :type retry_after: :class:`float`, *default*: ``120``
+   :param maximum_tries: Maximum number of retries.
+   :type maximum_tries: :class:`int`, *default*: ``500``
+   :param session: Requests session.
+   :type session: :class:`requests.Session`
+
+
+   .. py:method:: apply_constraints(collection_id, request)
+
+      Apply constraints to the parameters in a request.
+
+      :param collection_id: Collection ID (e.g., ``"projections-cmip6"``).
+      :type collection_id: :class:`str`
+      :param request: Request parameters.
+      :type request: :class:`dict[str,Any]`
+
+      :returns: Dictionary of valid values.
+      :rtype: :class:`dict[str,Any]`
+
+
+
+   .. py:method:: check_authentication()
+
+      Verify authentication.
+
+      :returns: Content of the response.
+      :rtype: :class:`dict[str,Any]`
+
+      :raises requests.HTTPError: If the authentication fails.
+
+
+
+   .. py:method:: download_results(request_uid, target = None)
+
+      Download the results of a request.
+
+      :param request_uid: Request UID.
+      :type request_uid: :class:`str`
+      :param target: Target path. If None, download to the working directory.
+      :type target: :class:`str` or :obj:`None`
+
+      :returns: Path to the retrieved file.
+      :rtype: :class:`str`
+
+
+
+   .. py:method:: estimate_costs(collection_id, request)
+
+      Estimate costs of the parameters in a request.
+
+      :param collection_id: Collection ID (e.g., ``"projections-cmip6"``).
+      :type collection_id: :class:`str`
+      :param request: Request parameters.
+      :type request: :class:`dict[str,Any]`
+
+      :returns: Dictionary of estimated costs.
+      :rtype: :class:`dict[str,Any]`
+
+
+
+   .. py:method:: get_collection(collection_id)
+
+      Retrieve a catalogue collection.
+
+      :param collection_id: Collection ID (e.g., ``"projections-cmip6"``).
+      :type collection_id: :class:`str`
+
+      :rtype: :class:`datapi.Collection`
+
+
+
+   .. py:method:: get_collections(limit = None, sortby = None, query = None, keywords = None)
+
+      Retrieve catalogue collections.
+
+      :param limit: Number of processes per page.
+      :type limit: :class:`int | None`
+      :param sortby: Field to sort results by.
+      :type sortby: ``{None, 'id', 'relevance', 'title', 'update'}``
+      :param query: Full-text search query.
+      :type query: :class:`str` or :obj:`None`
+      :param keywords: Filter by keywords.
+      :type keywords: :class:`list[str]` or :obj:`None`
+
+      :rtype: :class:`datapi.Collections`
+
+
+
+   .. py:method:: get_jobs(limit = None, sortby = None, status = None)
+
+      Retrieve submitted jobs.
+
+      :param limit: Number of processes per page.
+      :type limit: :class:`int` or :obj:`None`
+      :param sortby: Field to sort results by.
+      :type sortby: ``{None, 'created', '-created'}``
+      :param status: Status of the results.
+      :type status: ``{None, 'accepted', 'running', 'successful', 'failed'}``
+
+      :rtype: :class:`datapi.Jobs`
+
+
+
+   .. py:method:: get_remote(request_uid)
+
+      Retrieve the remote object of a request.
+
+      :param request_uid: Request UID.
+      :type request_uid: :class:`str`
+
+      :rtype: :class:`datapi.Remote`
+
+
+
+   .. py:method:: get_results(request_uid)
+
+      Retrieve the results of a request.
+
+      :param request_uid: Request UID.
+      :type request_uid: :class:`str`
+
+      :rtype: :class:`datapi.Results`
+
+
+
+   .. py:method:: retrieve(collection_id, request, target = None)
+
+      Submit a request and retrieve the results.
+
+      :param collection_id: Collection ID (e.g., ``"projections-cmip6"``).
+      :type collection_id: :class:`str`
+      :param request: Request parameters.
+      :type request: :class:`dict[str,Any]`
+      :param target: Target path. If None, download to the working directory.
+      :type target: :class:`str` or :obj:`None`
+
+      :returns: Path to the retrieved file.
+      :rtype: :class:`str`
+
+
+
+   .. py:method:: submit(collection_id, request)
+
+      Submit a request.
+
+      :param collection_id: Collection ID (e.g., ``"projections-cmip6"``).
+      :type collection_id: :class:`str`
+      :param request: Request parameters.
+      :type request: :class:`dict[str,Any]`
+
+      :rtype: :class:`datapi.Remote`
+
+
+
+   .. py:method:: submit_and_wait_on_results(collection_id, request)
+
+      Submit a request and wait for the results to be ready.
+
+      :param collection_id: Collection ID (e.g., ``"projections-cmip6"``).
+      :type collection_id: :class:`str`
+      :param request: Request parameters.
+      :type request: :class:`dict[str,Any]`
+
+      :rtype: :class:`datapi.Results`
+
+

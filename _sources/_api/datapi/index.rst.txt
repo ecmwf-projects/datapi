@@ -15,6 +15,7 @@ Classes
 .. toctree::
    :hidden:
 
+   /_api/datapi/ApiClient
    /_api/datapi/Collection
    /_api/datapi/Collections
    /_api/datapi/Jobs
@@ -24,6 +25,7 @@ Classes
 
 .. autoapisummary::
 
+   datapi.ApiClient
    datapi.Collection
    datapi.Collections
    datapi.Jobs
