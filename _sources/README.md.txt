@@ -47,7 +47,7 @@ Configure the logging level to display INFO messages:
 
 ```
 
-Instantiate the API client and verify the authentication:
+Instantiate the API client and optionally verify authentication:
 
 ```python
 >>> import os
@@ -56,7 +56,7 @@ Instantiate the API client and verify the authentication:
 ...     url=os.getenv("DATAPI_URL"),
 ...     key=os.getenv("DATAPI_KEY"),
 ... )
->>> client.check_authentication()
+>>> client.check_authentication()  # optional check
 {...}
 
 ```
@@ -78,7 +78,7 @@ datetime.datetime(...)
 ...     "pressure_level": "1000",
 ...     "time": "00:00",
 ... }
->>> collection.process.apply_constraints(**request)
+>>> collection.process.apply_constraints(request)
 {...}
 
 ```
@@ -86,10 +86,10 @@ datetime.datetime(...)
 Retrieve data:
 
 ```python
->>> client.retrieve(collection_id, target="tmp1-era5.grib", **request)  # blocks
+>>> client.retrieve(collection_id, request, target="tmp1-era5.grib")  # blocks
 'tmp1-era5.grib'
 
->>> remote = client.submit(collection_id, **request)  # doesn't block
+>>> remote = client.submit(collection_id, request)  # doesn't block
 >>> remote.request_uid
 '...'
 >>> remote.status
