@@ -2,7 +2,7 @@ import logging
 
 import pytest
 from requests import HTTPError
-import datetime
+
 from datapi import ApiClient, Process, Processes, Remote
 
 
