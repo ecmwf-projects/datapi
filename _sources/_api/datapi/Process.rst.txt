@@ -14,10 +14,10 @@ datapi.Process
       Apply constraints to the parameters in a request.
 
       :param request: Request parameters.
-      :type request: :class:`dict[str,Any]`
+      :type request: :py:class:`dict[str,Any]`
 
       :returns: Dictionary of valid values.
-      :rtype: :class:`dict[str,Any]`
+      :rtype: :py:class:`dict[str,Any]`
 
 
 
@@ -26,10 +26,10 @@ datapi.Process
       Estimate costs of the parameters in a request.
 
       :param request: Request parameters.
-      :type request: :class:`dict[str,Any]`
+      :type request: :py:class:`dict[str,Any]`
 
       :returns: Dictionary of estimated costs.
-      :rtype: :class:`dict[str,Any]`
+      :rtype: :py:class:`dict[str,Any]`
 
 
 
@@ -38,9 +38,9 @@ datapi.Process
       Submit a request.
 
       :param request: Request parameters.
-      :type request: :class:`dict[str,Any]`
+      :type request: :py:class:`dict[str,Any]`
 
-      :rtype: :class:`datapi.Remote`
+      :rtype: :py:class:`datapi.Remote`
 
 
 

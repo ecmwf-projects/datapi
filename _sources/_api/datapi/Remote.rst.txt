@@ -11,7 +11,7 @@ datapi.Remote
       Delete job.
 
       :returns: Content of the response.
-      :rtype: :class:`dict[str,Any]`
+      :rtype: :py:class:`dict[str,Any]`
 
 
 
@@ -20,10 +20,10 @@ datapi.Remote
       Download the results.
 
       :param target: Target path. If None, download to the working directory.
-      :type target: :class:`str` or :obj:`None`
+      :type target: :py:class:`str` or :py:obj:`None`
 
       :returns: Path to the retrieved file.
-      :rtype: :class:`str`
+      :rtype: :py:class:`str`
 
 
 
