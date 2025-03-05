@@ -94,40 +94,66 @@ datetime.datetime(...)
 >>> collection.bbox
 (...)
 
->>> request = {
-...     "product_type": "reanalysis",
-...     "variable": "temperature",
-...     "year": "2022",
-...     "month": "01",
-...     "day": "01",
-...     "pressure_level": "1000",
-...     "time": "00:00",
-... }
->>> collection.apply_constraints(request)
-{...}
-
 ```
 
 Retrieve data:
 
 ```python
->>> client.retrieve(collection_id, request, target="tmp1-era5.grib")  # blocks
-'tmp1-era5.grib'
+>>> request = {
+...     "product_type": ["reanalysis"],
+...     "variable": ["temperature"],
+...     "year": ["2022"],
+...     "month": ["01"],
+...     "day": ["01"],
+...     "time": ["00:00"],
+...     "pressure_level": ["1000"],
+...     "data_format": "grib",
+...     "download_format": "unarchived"
+...     }
+>>> client.retrieve(collection_id, request, target="target_1.grib")  # blocks
+'target_1.grib'
 
 >>> remote = client.submit(collection_id, request)  # doesn't block
+>>> remote.created_at
+datetime.datetime(...)
 >>> remote.request_id
 '...'
 >>> remote.status
 '...'
->>> remote.download("tmp2-era5.grib")  # blocks
-'tmp2-era5.grib'
+>>> remote.download(target="target_2.grib")  # blocks
+'target_2.grib'
+
+```
+
+List all successful jobs, sorted by newest first:
+
+```python
+>>> jobs = client.get_jobs(sortby="-created", status="successful")
+>>> request_ids = []
+>>> while jobs is not None:  # Loop over pages
+...     request_ids.extend(jobs.request_ids)
+...     jobs = jobs.next  # Move to the next page
+>>> request_ids
+[...]
 
 ```
 
 Interact with a previously submitted job:
 
 ```python
->>> remote = client.get_remote(remote.request_id)
+>>> remote = client.get_remote(request_ids[0])
+>>> remote.collection_id
+'reanalysis-era5-pressure-levels'
+>>> remote.request
+{...}
+>>> remote.status
+'successful'
+>>> remote.results_ready
+True
+>>> remote.started_at
+datetime.datetime(...)
+>>> remote.finished_at
+datetime.datetime(...)
 >>> remote.delete()
 {...}
 
