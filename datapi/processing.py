@@ -503,7 +503,16 @@ class Remote:
         results = Results.from_request("get", results_url, **self._request_kwargs)
         return results
 
-    def make_results(self) -> Results:
+    def make_results(self, wait: bool = True) -> Results:
+        warnings.warn(
+            "`make_results` has been deprecated, and in the future will raise an error."
+            "Please use `get_results` from now on.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        return self._make_results(wait)
+
+    def get_results(self) -> Results:
         """Retrieve results.
 
         Returns
@@ -525,7 +534,7 @@ class Remote:
         str
             Path to the retrieved file.
         """
-        results = self.make_results()
+        results = self.get_results()
         return results.download(target)
 
     def delete(self) -> dict[str, Any]:
@@ -571,7 +580,7 @@ class Remote:
         elif reply["state"] == "failed":
             reply.setdefault("error", {})
             try:
-                self.make_results()
+                self.get_results()
             except Exception as exc:
                 reply["error"].setdefault("message", str(exc))
 
