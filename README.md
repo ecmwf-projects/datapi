@@ -120,7 +120,7 @@ datetime.datetime(...)
 '...'
 >>> remote.status
 '...'
->>> remote.download(target="target_2.grib")  # blocks
+>>> remote.download("target_2.grib")  # blocks
 'target_2.grib'
 
 ```
@@ -157,6 +157,40 @@ datetime.datetime(...)
 >>> remote.delete()
 {...}
 
+```
+
+Interact with cached results:
+
+```python
+>>> results = client.get_results(request_ids[1])
+>>> results.content_length > 0
+True
+>>> results.content_type
+'application/x-grib'
+>>> results.location
+'...'
+>>> results.download('target_3.grib')
+'target_3.grib'
+
+```
+
+Apply constraints and find the number of available days in a given month:
+
+```python
+>>> month = {"year": "2000", "month": "02"}
+>>> constrained_request = client.apply_constraints(collection_id, month)
+>>> len(constrained_request["day"])
+29
+
+```
+
+Utility methods:
+
+```python
+>>> client.download_results(request_ids[1], 'target_4.grib')
+'target_4.grib'
+>>> client.submit_and_wait_on_results(collection_id, request)
+Results(...)
 ```
 
 ## Workflow for developers/contributors
