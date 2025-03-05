@@ -334,7 +334,7 @@ class ApiClient:
         -------
         datapi.Remote
         """
-        return self._retrieve_api.get_job(request_id).make_remote()
+        return self._retrieve_api.get_job(request_id).get_remote()
 
     def get_results(self, request_id: str) -> datapi.Results:
         """
