@@ -486,13 +486,13 @@ class Remote:
         if status in ("accepted", "running"):
             return False
         if status == "failed":
-            results = self.make_results(wait=False)
+            results = self._make_results(wait=False)
             raise ProcessingFailedError(error_json_to_message(results._json_dict))
         if status in ("dismissed", "deleted"):
             raise ProcessingFailedError(f"API state {status!r}")
         raise ProcessingFailedError(f"Unknown API state {status!r}")
 
-    def make_results(self, wait: bool = True) -> Results:
+    def _make_results(self, wait: bool) -> Results:
         if wait:
             self._wait_on_results()
         response = self._get_api_response("get")
@@ -502,6 +502,15 @@ class Remote:
             results_url = f"{self.url}/results"
         results = Results.from_request("get", results_url, **self._request_kwargs)
         return results
+
+    def make_results(self) -> Results:
+        """Retrieve results.
+
+        Returns
+        -------
+        datapi.Results
+        """
+        return self._make_results(wait=True)
 
     def download(self, target: str | None = None) -> str:
         """Download the results.
