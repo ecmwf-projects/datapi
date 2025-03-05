@@ -56,6 +56,34 @@ class Collection(ApiResponse):
         return datetime.datetime.fromisoformat(value.replace("Z", "+00:00"))
 
     @property
+    def published_at(self) -> datetime.datetime:
+        """When the collection was first published."""
+        return datetime.datetime.fromisoformat(
+            self._json_dict["published"].replace("Z", "+00:00")
+        )
+
+    @property
+    def updated_at(self) -> datetime.datetime:
+        """When the collection was last updated."""
+        return datetime.datetime.fromisoformat(
+            self._json_dict["updated"].replace("Z", "+00:00")
+        )
+
+    @property
+    def title(self) -> str:
+        """Title of the collection."""
+        value = self._json_dict["title"]
+        assert isinstance(value, str)
+        return value
+
+    @property
+    def description(self) -> str:
+        """Description of the collection."""
+        value = self._json_dict["description"]
+        assert isinstance(value, str)
+        return value
+
+    @property
     def bbox(self) -> tuple[float, float, float, float]:
         """Bounding box of the collection (W, S, E, N)."""
         return tuple(self._json_dict["extent"]["spatial"]["bbox"][0])

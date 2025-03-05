@@ -61,13 +61,38 @@ Instantiate the API client and optionally verify authentication:
 
 ```
 
+List all collection IDs sorted by last update:
+
+```python
+>>> collections = client.get_collections(sortby="update")
+>>> collection_ids = []
+>>> while collections is not None:  # Loop over pages
+...     collection_ids.extend(collections.collection_ids)
+...     collections = collections.next  # Move to the next page
+>>> collection_ids
+[...]
+
+```
+
 Explore a collection:
 
 ```python
 >>> collection_id = "reanalysis-era5-pressure-levels"
 >>> collection = client.get_collection(collection_id)
+>>> collection.title
+'...'
+>>> collection.description
+'...'
+>>> collection.published_at
+datetime.datetime(...)
+>>> collection.updated_at
+datetime.datetime(...)
+>>> collection.begin_datetime
+datetime.datetime(...)
 >>> collection.end_datetime
 datetime.datetime(...)
+>>> collection.bbox
+(...)
 
 >>> request = {
 ...     "product_type": "reanalysis",
@@ -78,7 +103,7 @@ datetime.datetime(...)
 ...     "pressure_level": "1000",
 ...     "time": "00:00",
 ... }
->>> collection.process.apply_constraints(request)
+>>> collection.apply_constraints(request)
 {...}
 
 ```
