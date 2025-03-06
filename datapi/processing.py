@@ -344,18 +344,6 @@ class Process(ApiResponse):
         return response._json_dict
 
     def estimate_costs(self, request: dict[str, Any]) -> dict[str, Any]:
-        """Estimate costs of the parameters in a request.
-
-        Parameters
-        ----------
-        request: dict[str,Any]
-            Request parameters.
-
-        Returns
-        -------
-        dict[str,Any]
-            Dictionary of estimated costs.
-        """
         response = ApiResponse.from_request(
             "post",
             f"{self.url}/costing",
@@ -452,6 +440,11 @@ class Remote:
             self.info(f"status has been updated to {status}")
         self.last_status = status
         return str(status)
+
+    @property
+    def updated_at(self) -> datetime.datetime:
+        """When the job was last updated."""
+        return datetime.datetime.fromisoformat(self.json["updated"])
 
     @property
     def created_at(self) -> datetime.datetime:

@@ -146,18 +146,26 @@ Interact with a previously submitted job:
 
 ```python
 >>> remote = client.get_remote(request_ids[0])
->>> remote.collection_id
-'reanalysis-era5-pressure-levels'
->>> remote.request
-{...}
+>>> remote.collection_id == collection_id
+True
+>>> remote.request == request
+True
 >>> remote.status
 'successful'
 >>> remote.results_ready
 True
+>>> remote.created_at
+datetime.datetime(...)
 >>> remote.started_at
 datetime.datetime(...)
 >>> remote.finished_at
 datetime.datetime(...)
+>>> remote.updated_at == remote.finished_at
+True
+>>> remote.get_results()
+Results(...)
+>>> remote.download("target_3.grib")
+'target_3.grib'
 >>> remote.delete()
 {...}
 
@@ -173,15 +181,15 @@ True
 'application/x-grib'
 >>> results.location
 '...'
->>> results.download('target_3.grib')
-'target_3.grib'
+>>> results.download('target_4.grib')
+'target_4.grib'
 
 ```
 
 Apply constraints and find the number of available days in a given month:
 
 ```python
->>> month = {"year": "2000", "month": "02"}
+>>> month = {"year": "2000", "month": "02"}  # Leap year
 >>> constrained_request = client.apply_constraints(collection_id, month)
 >>> len(constrained_request["day"])
 29
@@ -191,8 +199,8 @@ Apply constraints and find the number of available days in a given month:
 Utility methods:
 
 ```python
->>> client.download_results(request_ids[1], 'target_4.grib')
-'target_4.grib'
+>>> client.download_results(request_ids[1], 'target_5.grib')
+'target_5.grib'
 >>> client.submit_and_wait_on_results(collection_id, request)
 Results(...)
 

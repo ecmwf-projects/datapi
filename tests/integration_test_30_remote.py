@@ -105,6 +105,7 @@ def test_remote_datetimes(api_anon_client: ApiClient) -> None:
     assert remote.started_at is not None
     assert remote.finished_at is not None
     assert remote.created_at < remote.started_at < remote.finished_at
+    assert remote.finished_at == remote.updated_at
 
 
 def test_make_results_deprecation(api_anon_client: ApiClient) -> None:

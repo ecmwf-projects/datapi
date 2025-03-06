@@ -102,7 +102,7 @@ class Collection(ApiResponse):
     def process(self) -> datapi.Process:
         warnings.warn(
             "`process` has been deprecated, and in the future will raise an error."
-            "Please use `submit`, `apply_constraints`, and `estimate_costs` from now on.",
+            "Please use `submit` and `apply_constraints` from now on.",
             DeprecationWarning,
             stacklevel=2,
         )
@@ -154,18 +154,6 @@ class Collection(ApiResponse):
         return self._process.apply_constraints(request)
 
     def estimate_costs(self, request: dict[str, Any]) -> dict[str, Any]:
-        """Estimate costs of the parameters in a request.
-
-        Parameters
-        ----------
-        request: dict[str,Any]
-            Request parameters.
-
-        Returns
-        -------
-        dict[str,Any]
-            Dictionary of estimated costs.
-        """
         return self._process.estimate_costs(request)
 
 

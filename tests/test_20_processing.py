@@ -382,6 +382,7 @@ def test_submit(cat: catalogue.Catalogue) -> None:
     assert remote.results_ready is True
 
     assert remote.created_at.isoformat() == "2022-09-02T17:30:48.201213"
+    assert remote.updated_at.isoformat() == "2022-09-02T17:32:54.308116"
     assert remote.started_at is not None
     assert remote.started_at.isoformat() == "2022-09-02T17:32:43.890617"
     assert remote.finished_at is not None
