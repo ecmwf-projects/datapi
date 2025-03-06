@@ -76,6 +76,7 @@ Retrieve data:
 ...     "data_format": "grib",
 ...     "download_format": "unarchived"
 ...     }
+
 >>> client.retrieve(collection_id, request, target="target_1.grib")  # blocks
 'target_1.grib'
 
@@ -90,6 +91,9 @@ Remote(...)
 Results(...)
 >>> remote.download("target_3.grib")
 'target_3.grib'
+
+>>> client.download_results(remote.request_id, "target_4.grib")  # blocks
+'target_4.grib'
 
 ```
 
@@ -142,6 +146,23 @@ Remote(...)
 
 ```
 
+Interact with results:
+
+```python
+>>> results = client.get_results(remote.request_id)
+
+>>> results.content_length > 0
+True
+>>> results.content_type
+'application/x-grib'
+>>> results.location
+'...'
+
+>>> results.download("target_5.grib")
+'target_5.grib'
+
+```
+
 List all successful jobs, sorted by newest first:
 
 ```python
@@ -162,7 +183,7 @@ True
 Interact with a previously submitted job:
 
 ```python
->>> remote = client.get_remote(request_ids[0])
+>>> remote = client.get_remote(remote.request_id)
 
 >>> remote.collection_id == collection_id
 True
@@ -183,8 +204,8 @@ datetime.datetime(...)
 >>> remote.updated_at == remote.finished_at
 True
 
->>> remote.download("target_4.grib")
-'target_4.grib'
+>>> remote.download("target_6.grib")
+'target_6.grib'
 
 >>> remote.get_results()
 Results(...)
@@ -194,39 +215,14 @@ Results(...)
 
 ```
 
-Interact with results:
-
-```python
->>> results = client.get_results(request_ids[1])
-
->>> results.content_length > 0
-True
->>> results.content_type
-'application/x-grib'
->>> results.location
-'...'
-
->>> results.download("target_5.grib")
-'target_5.grib'
-
-```
-
 Apply constraints and find the number of available days in a given month:
 
 ```python
->>> month = {"year": "2000", "month": "02"}  # Leap year
+>>> month = {"year": "2000", "month": "02"}
 >>> constrained_request = client.apply_constraints(collection_id, month)
 
 >>> len(constrained_request["day"])
 29
-
-```
-
-Utility methods:
-
-```python
->>> client.download_results(request_ids[1], "target_6.grib")
-'target_6.grib'
 
 ```
 
