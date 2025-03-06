@@ -92,10 +92,12 @@ List all collection IDs sorted by last update:
 
 ```python
 >>> collections = client.get_collections(sortby="update")
+
 >>> collection_ids = []
 >>> while collections is not None:  # Loop over pages
 ...     collection_ids.extend(collections.collection_ids)
 ...     collections = collections.next  # Move to the next page
+
 >>> collection_ids
 [...]
 >>> collection_id in collection_ids
@@ -107,16 +109,19 @@ Explore a collection:
 
 ```python
 >>> collection = client.get_collection(collection_id)
+
 >>> collection.id
 'reanalysis-era5-pressure-levels'
 >>> collection.title
 '...'
 >>> collection.description
 '...'
+
 >>> collection.published_at
 datetime.datetime(...)
 >>> collection.updated_at
 datetime.datetime(...)
+
 >>> collection.begin_datetime
 datetime.datetime(...)
 >>> collection.end_datetime
@@ -130,12 +135,16 @@ List all successful jobs, sorted by newest first:
 
 ```python
 >>> jobs = client.get_jobs(sortby="-created", status="successful")
+
 >>> request_ids = []
 >>> while jobs is not None:  # Loop over pages
 ...     request_ids.extend(jobs.request_ids)
 ...     jobs = jobs.next  # Move to the next page
+
 >>> request_ids
 [...]
+>>> remote.request_id in request_ids
+True
 
 ```
 
@@ -143,14 +152,17 @@ Interact with a previously submitted job:
 
 ```python
 >>> remote = client.get_remote(request_ids[0])
+
 >>> remote.collection_id == collection_id
 True
 >>> remote.request == request
 True
+
 >>> remote.status
 'successful'
 >>> remote.results_ready
 True
+
 >>> remote.created_at
 datetime.datetime(...)
 >>> remote.started_at
@@ -159,10 +171,13 @@ datetime.datetime(...)
 datetime.datetime(...)
 >>> remote.updated_at == remote.finished_at
 True
+
 >>> remote.download("target_3.grib")
 'target_3.grib'
+
 >>> remote.get_results()
 Results(...)
+
 >>> remote.delete()
 {...}
 
@@ -172,12 +187,14 @@ Interact with cached results:
 
 ```python
 >>> results = client.get_results(request_ids[1])
+
 >>> results.content_length > 0
 True
 >>> results.content_type
 'application/x-grib'
 >>> results.location
 '...'
+
 >>> results.download("target_4.grib")
 'target_4.grib'
 
