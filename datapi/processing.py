@@ -684,7 +684,6 @@ class Results(ApiResponse):
 
     @property
     def asset(self) -> dict[str, Any]:
-        """Asset dictionary."""
         return dict(self._json_dict["asset"]["value"])
 
     def _download(self, url: str, target: str) -> requests.Response:

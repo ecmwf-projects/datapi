@@ -80,11 +80,16 @@ Retrieve data:
 'target_1.grib'
 
 >>> remote = client.submit(collection_id, request)  # doesn't block
+>>> remote
+Remote(...)
 >>> remote.download("target_2.grib")  # blocks
 'target_2.grib'
 
->>> client.submit_and_wait_on_results(collection_id, request)  # blocks
+>>> results = client.submit_and_wait_on_results(collection_id, request)  # blocks
+>>> results
 Results(...)
+>>> remote.download("target_3.grib")
+'target_3.grib'
 
 ```
 
@@ -110,8 +115,8 @@ Explore a collection:
 ```python
 >>> collection = client.get_collection(collection_id)
 
->>> collection.id
-'reanalysis-era5-pressure-levels'
+>>> collection.id == collection_id
+True
 >>> collection.title
 '...'
 >>> collection.description
@@ -128,6 +133,12 @@ datetime.datetime(...)
 datetime.datetime(...)
 >>> collection.bbox
 (...)
+
+>>> collection.submit(request)
+Remote(...)
+
+>>> collection.apply_constraints(request)
+{...}
 
 ```
 
@@ -172,8 +183,8 @@ datetime.datetime(...)
 >>> remote.updated_at == remote.finished_at
 True
 
->>> remote.download("target_3.grib")
-'target_3.grib'
+>>> remote.download("target_4.grib")
+'target_4.grib'
 
 >>> remote.get_results()
 Results(...)
@@ -183,7 +194,7 @@ Results(...)
 
 ```
 
-Interact with cached results:
+Interact with results:
 
 ```python
 >>> results = client.get_results(request_ids[1])
@@ -195,8 +206,8 @@ True
 >>> results.location
 '...'
 
->>> results.download("target_4.grib")
-'target_4.grib'
+>>> results.download("target_5.grib")
+'target_5.grib'
 
 ```
 
@@ -205,6 +216,7 @@ Apply constraints and find the number of available days in a given month:
 ```python
 >>> month = {"year": "2000", "month": "02"}  # Leap year
 >>> constrained_request = client.apply_constraints(collection_id, month)
+
 >>> len(constrained_request["day"])
 29
 
@@ -213,8 +225,8 @@ Apply constraints and find the number of available days in a given month:
 Utility methods:
 
 ```python
->>> client.download_results(request_ids[1], "target_5.grib")
-'target_5.grib'
+>>> client.download_results(request_ids[1], "target_6.grib")
+'target_6.grib'
 
 ```
 

@@ -110,7 +110,6 @@ class Collection(ApiResponse):
 
     @property
     def form(self) -> list[dict[str, Any]]:
-        """Form JSON."""
         url = f"{self.url}/form.json"
         return ApiResponse.from_request(
             "get", url, log_messages=False, **self._request_kwargs
@@ -118,7 +117,6 @@ class Collection(ApiResponse):
 
     @property
     def constraints(self) -> list[dict[str, Any]]:
-        """Constraints JSON."""
         url = f"{self.url}/constraints.json"
         return ApiResponse.from_request(
             "get", url, log_messages=False, **self._request_kwargs
