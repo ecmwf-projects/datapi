@@ -162,10 +162,10 @@ datetime.datetime(...)
 datetime.datetime(...)
 >>> remote.updated_at == remote.finished_at
 True
->>> remote.get_results()
-Results(...)
 >>> remote.download("target_3.grib")
 'target_3.grib'
+>>> remote.get_results()
+Results(...)
 >>> remote.delete()
 {...}
 
