@@ -80,14 +80,11 @@ Retrieve data:
 'target_1.grib'
 
 >>> remote = client.submit(collection_id, request)  # doesn't block
->>> remote.created_at
-datetime.datetime(...)
->>> remote.request_id
-'...'
->>> remote.status
-'...'
 >>> remote.download("target_2.grib")  # blocks
 'target_2.grib'
+
+>>> client.submit_and_wait_on_results(collection_id, request)  # blocks
+Results(...)
 
 ```
 
@@ -201,8 +198,6 @@ Utility methods:
 ```python
 >>> client.download_results(request_ids[1], 'target_5.grib')
 'target_5.grib'
->>> client.submit_and_wait_on_results(collection_id, request)
-Results(...)
 
 ```
 
