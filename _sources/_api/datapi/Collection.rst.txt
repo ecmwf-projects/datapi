@@ -9,6 +9,29 @@ datapi.Collection
    A class to interact with a catalogue collection.
 
 
+   .. py:method:: apply_constraints(request)
+
+      Apply constraints to the parameters in a request.
+
+      :param request: Request parameters.
+      :type request: :py:class:`dict[str,Any]`
+
+      :returns: Dictionary of valid values.
+      :rtype: :py:class:`dict[str,Any]`
+
+
+
+   .. py:method:: submit(request)
+
+      Submit a request.
+
+      :param request: Request parameters.
+      :type request: :py:class:`dict[str,Any]`
+
+      :rtype: :py:class:`datapi.Remote`
+
+
+
    .. py:property:: bbox
       :type: tuple[float, float, float, float]
 
@@ -23,11 +46,11 @@ datapi.Collection
       Begin datetime of the collection.
 
 
-   .. py:property:: constraints
-      :type: list[dict[str, Any]]
+   .. py:property:: description
+      :type: str
 
 
-      Constraints JSON.
+      Description of the collection.
 
 
    .. py:property:: end_datetime
@@ -35,13 +58,6 @@ datapi.Collection
 
 
       End datetime of the collection.
-
-
-   .. py:property:: form
-      :type: list[dict[str, Any]]
-
-
-      Form JSON.
 
 
    .. py:property:: id
@@ -58,11 +74,25 @@ datapi.Collection
       Content of the response.
 
 
-   .. py:property:: process
-      :type: datapi.Process
+   .. py:property:: published_at
+      :type: datetime.datetime
 
 
-      Collection process.
+      When the collection was first published.
+
+
+   .. py:property:: title
+      :type: str
+
+
+      Title of the collection.
+
+
+   .. py:property:: updated_at
+      :type: datetime.datetime
+
+
+      When the collection was last updated.
 
 
    .. py:property:: url

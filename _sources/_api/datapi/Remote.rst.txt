@@ -27,6 +27,14 @@ datapi.Remote
 
 
 
+   .. py:method:: get_results()
+
+      Retrieve results.
+
+      :rtype: :py:class:`datapi.Results`
+
+
+
    .. py:property:: collection_id
       :type: str
 
@@ -34,18 +42,18 @@ datapi.Remote
       Collection ID.
 
 
-   .. py:property:: creation_datetime
+   .. py:property:: created_at
       :type: datetime.datetime
 
 
-      Creation datetime of the job.
+      When the job was created.
 
 
-   .. py:property:: end_datetime
+   .. py:property:: finished_at
       :type: datetime.datetime | None
 
 
-      End datetime of the job. If None, job has not finished.
+      When the job finished. If None, the job has not finished.
 
 
    .. py:property:: json
@@ -62,11 +70,11 @@ datapi.Remote
       Request parameters.
 
 
-   .. py:property:: request_uid
+   .. py:property:: request_id
       :type: str
 
 
-      Request UID.
+      Request ID.
 
 
    .. py:property:: results_ready
@@ -76,11 +84,11 @@ datapi.Remote
       Check if results are ready.
 
 
-   .. py:property:: start_datetime
+   .. py:property:: started_at
       :type: datetime.datetime | None
 
 
-      Start datetime of the job. If None, job has not started.
+      When the job started. If None, the job has not started.
 
 
    .. py:property:: status
@@ -88,4 +96,11 @@ datapi.Remote
 
 
       Request status.
+
+
+   .. py:property:: updated_at
+      :type: datetime.datetime
+
+
+      When the job was last updated.
 

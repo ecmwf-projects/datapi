@@ -21,13 +21,6 @@ datapi.Results
 
 
 
-   .. py:property:: asset
-      :type: dict[str, Any]
-
-
-      Asset dictionary.
-
-
    .. py:property:: content_length
       :type: int
 

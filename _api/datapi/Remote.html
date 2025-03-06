@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>datapi.Remote &#8212; datapi 0.2.1 documentation</title>
+    <title>datapi.Remote &#8212; datapi 0.3.0 documentation</title>
   
   
   
@@ -39,17 +39,17 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=37f418d5"></script>
+    <script src="../../_static/documentation_options.js?v=e259d695"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_api/datapi/Remote';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="datapi.Results" href="Results.html" />
-    <link rel="prev" title="datapi.Process" href="Process.html" />
+    <link rel="prev" title="datapi.Jobs" href="Jobs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.2.1" />
+  <meta name="docsearch:version" content="0.3.0" />
   </head>
   
   
@@ -111,7 +111,7 @@
   
   
   
-    <p class="title logo__title">datapi 0.2.1 documentation</p>
+    <p class="title logo__title">datapi 0.3.0 documentation</p>
   
 </a></div>
     
@@ -256,7 +256,6 @@
 <li class="toctree-l1"><a class="reference internal" href="Collection.html">datapi.Collection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Collections.html">datapi.Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Jobs.html">datapi.Jobs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Process.html">datapi.Process</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">datapi.Remote</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Results.html">datapi.Results</a></li>
 </ul>
@@ -356,6 +355,17 @@
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="datapi.Remote.get_results">
+<span class="sig-name descname"><span class="pre">get_results</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datapi.Remote.get_results" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="Results.html#datapi.Results" title="datapi.Results"><code class="xref py py-class docutils literal notranslate"><span class="pre">datapi.Results</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="datapi.Remote.collection_id">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">collection_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#datapi.Remote.collection_id" title="Link to this definition">#</a></dt>
@@ -363,15 +373,15 @@
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="datapi.Remote.creation_datetime">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">creation_datetime</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime.datetime</span></em><a class="headerlink" href="#datapi.Remote.creation_datetime" title="Link to this definition">#</a></dt>
-<dd><p>Creation datetime of the job.</p>
+<dt class="sig sig-object py" id="datapi.Remote.created_at">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime.datetime</span></em><a class="headerlink" href="#datapi.Remote.created_at" title="Link to this definition">#</a></dt>
+<dd><p>When the job was created.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="datapi.Remote.end_datetime">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">end_datetime</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime.datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#datapi.Remote.end_datetime" title="Link to this definition">#</a></dt>
-<dd><p>End datetime of the job. If None, job has not finished.</p>
+<dt class="sig sig-object py" id="datapi.Remote.finished_at">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">finished_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime.datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#datapi.Remote.finished_at" title="Link to this definition">#</a></dt>
+<dd><p>When the job finished. If None, the job has not finished.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -387,9 +397,9 @@
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="datapi.Remote.request_uid">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">request_uid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#datapi.Remote.request_uid" title="Link to this definition">#</a></dt>
-<dd><p>Request UID.</p>
+<dt class="sig sig-object py" id="datapi.Remote.request_id">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">request_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#datapi.Remote.request_id" title="Link to this definition">#</a></dt>
+<dd><p>Request ID.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -399,15 +409,21 @@
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="datapi.Remote.start_datetime">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start_datetime</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime.datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#datapi.Remote.start_datetime" title="Link to this definition">#</a></dt>
-<dd><p>Start datetime of the job. If None, job has not started.</p>
+<dt class="sig sig-object py" id="datapi.Remote.started_at">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">started_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime.datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#datapi.Remote.started_at" title="Link to this definition">#</a></dt>
+<dd><p>When the job started. If None, the job has not started.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="datapi.Remote.status">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#datapi.Remote.status" title="Link to this definition">#</a></dt>
 <dd><p>Request status.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datapi.Remote.updated_at">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime.datetime</span></em><a class="headerlink" href="#datapi.Remote.updated_at" title="Link to this definition">#</a></dt>
+<dd><p>When the job was last updated.</p>
 </dd></dl>
 
 </dd></dl>
@@ -425,12 +441,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Process.html"
+       href="Jobs.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">datapi.Process</p>
+        <p class="prev-next-title">datapi.Jobs</p>
       </div>
     </a>
     <a class="right-next"
@@ -464,15 +480,17 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote"><code class="docutils literal notranslate"><span class="pre">datapi.Remote</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.delete"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.delete()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.download"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.download()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.get_results"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.get_results()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.collection_id"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.collection_id</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.creation_datetime"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.creation_datetime</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.end_datetime"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.end_datetime</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.created_at"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.created_at</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.finished_at"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.finished_at</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.json"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.json</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.request"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.request</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.request_uid"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.request_uid</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.request_id"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.request_id</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.results_ready"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.results_ready</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.start_datetime"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.start_datetime</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.started_at"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.started_at</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.status"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.status</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Remote.updated_at"><code class="docutils literal notranslate"><span class="pre">datapi.Remote.updated_at</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -521,7 +539,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.1.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>

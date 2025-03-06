@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>datapi.Collection &#8212; datapi 0.2.1 documentation</title>
+    <title>datapi.Collection &#8212; datapi 0.3.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=37f418d5"></script>
+    <script src="../../_static/documentation_options.js?v=e259d695"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_api/datapi/Collection';</script>
@@ -49,7 +49,7 @@
     <link rel="prev" title="datapi.ApiClient" href="ApiClient.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.2.1" />
+  <meta name="docsearch:version" content="0.3.0" />
   </head>
   
   
@@ -111,7 +111,7 @@
   
   
   
-    <p class="title logo__title">datapi 0.2.1 documentation</p>
+    <p class="title logo__title">datapi 0.3.0 documentation</p>
   
 </a></div>
     
@@ -256,7 +256,6 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">datapi.Collection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Collections.html">datapi.Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Jobs.html">datapi.Jobs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Process.html">datapi.Process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Remote.html">datapi.Remote</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Results.html">datapi.Results</a></li>
 </ul>
@@ -326,6 +325,37 @@
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datapi.</span></span><span class="sig-name descname"><span class="pre">Collection</span></span><a class="headerlink" href="#datapi.Collection" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">datapi.processing.ApiResponse</span></code></p>
 <p>A class to interact with a catalogue collection.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datapi.Collection.apply_constraints">
+<span class="sig-name descname"><span class="pre">apply_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datapi.Collection.apply_constraints" title="Link to this definition">#</a></dt>
+<dd><p>Apply constraints to the parameters in a request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict[str,Any]</span></code>) – Request parameters.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary of valid values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict[str,Any]</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datapi.Collection.submit">
+<span class="sig-name descname"><span class="pre">submit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datapi.Collection.submit" title="Link to this definition">#</a></dt>
+<dd><p>Submit a request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict[str,Any]</span></code>) – Request parameters.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="Remote.html#datapi.Remote" title="datapi.Remote"><code class="xref py py-class docutils literal notranslate"><span class="pre">datapi.Remote</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="datapi.Collection.bbox">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bbox</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#datapi.Collection.bbox" title="Link to this definition">#</a></dt>
@@ -339,21 +369,15 @@
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="datapi.Collection.constraints">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">constraints</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#datapi.Collection.constraints" title="Link to this definition">#</a></dt>
-<dd><p>Constraints JSON.</p>
+<dt class="sig sig-object py" id="datapi.Collection.description">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#datapi.Collection.description" title="Link to this definition">#</a></dt>
+<dd><p>Description of the collection.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="datapi.Collection.end_datetime">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">end_datetime</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime.datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#datapi.Collection.end_datetime" title="Link to this definition">#</a></dt>
 <dd><p>End datetime of the collection.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="datapi.Collection.form">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">form</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#datapi.Collection.form" title="Link to this definition">#</a></dt>
-<dd><p>Form JSON.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -369,9 +393,21 @@
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="datapi.Collection.process">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="Process.html#datapi.Process" title="datapi.Process"><span class="pre">datapi.Process</span></a></em><a class="headerlink" href="#datapi.Collection.process" title="Link to this definition">#</a></dt>
-<dd><p>Collection process.</p>
+<dt class="sig sig-object py" id="datapi.Collection.published_at">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">published_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime.datetime</span></em><a class="headerlink" href="#datapi.Collection.published_at" title="Link to this definition">#</a></dt>
+<dd><p>When the collection was first published.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datapi.Collection.title">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#datapi.Collection.title" title="Link to this definition">#</a></dt>
+<dd><p>Title of the collection.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datapi.Collection.updated_at">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime.datetime</span></em><a class="headerlink" href="#datapi.Collection.updated_at" title="Link to this definition">#</a></dt>
+<dd><p>When the collection was last updated.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -432,14 +468,17 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection"><code class="docutils literal notranslate"><span class="pre">datapi.Collection</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.apply_constraints"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.apply_constraints()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.submit"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.submit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.bbox"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.bbox</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.begin_datetime"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.begin_datetime</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.constraints"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.constraints</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.description"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.description</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.end_datetime"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.end_datetime</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.form"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.form</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.id"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.id</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.json"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.json</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.process"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.process</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.published_at"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.published_at</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.title"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.title</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.updated_at"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.updated_at</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.Collection.url"><code class="docutils literal notranslate"><span class="pre">datapi.Collection.url</span></code></a></li>
 </ul>
 </li>
@@ -489,7 +528,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.1.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>

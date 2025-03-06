@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>datapi.ApiClient &#8212; datapi 0.2.1 documentation</title>
+    <title>datapi.ApiClient &#8212; datapi 0.3.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=37f418d5"></script>
+    <script src="../../_static/documentation_options.js?v=e259d695"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_api/datapi/ApiClient';</script>
@@ -49,7 +49,7 @@
     <link rel="prev" title="datapi" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.2.1" />
+  <meta name="docsearch:version" content="0.3.0" />
   </head>
   
   
@@ -111,7 +111,7 @@
   
   
   
-    <p class="title logo__title">datapi 0.2.1 documentation</p>
+    <p class="title logo__title">datapi 0.3.0 documentation</p>
   
 </a></div>
     
@@ -256,7 +256,6 @@
 <li class="toctree-l1"><a class="reference internal" href="Collection.html">datapi.Collection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Collections.html">datapi.Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Jobs.html">datapi.Jobs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Process.html">datapi.Process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Remote.html">datapi.Remote</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Results.html">datapi.Results</a></li>
 </ul>
@@ -380,12 +379,12 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datapi.ApiClient.download_results">
-<span class="sig-name descname"><span class="pre">download_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_uid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datapi.ApiClient.download_results" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">download_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datapi.ApiClient.download_results" title="Link to this definition">#</a></dt>
 <dd><p>Download the results of a request.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>request_uid</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Request UID.</p></li>
+<li><p><strong>request_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Request ID.</p></li>
 <li><p><strong>target</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Target path. If None, download to the working directory.</p></li>
 </ul>
 </dd>
@@ -394,26 +393,6 @@
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datapi.ApiClient.estimate_costs">
-<span class="sig-name descname"><span class="pre">estimate_costs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datapi.ApiClient.estimate_costs" title="Link to this definition">#</a></dt>
-<dd><p>Estimate costs of the parameters in a request.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>collection_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Collection ID (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;projections-cmip6&quot;</span></code>).</p></li>
-<li><p><strong>request</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict[str,Any]</span></code>) – Request parameters.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Dictionary of estimated costs.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict[str,Any]</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -471,11 +450,11 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datapi.ApiClient.get_remote">
-<span class="sig-name descname"><span class="pre">get_remote</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_uid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datapi.ApiClient.get_remote" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_remote</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datapi.ApiClient.get_remote" title="Link to this definition">#</a></dt>
 <dd><p>Retrieve the remote object of a request.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>request_uid</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Request UID.</p>
+<dd class="field-odd"><p><strong>request_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Request ID.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="Remote.html#datapi.Remote" title="datapi.Remote"><code class="xref py py-class docutils literal notranslate"><span class="pre">datapi.Remote</span></code></a></p>
@@ -485,11 +464,11 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datapi.ApiClient.get_results">
-<span class="sig-name descname"><span class="pre">get_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_uid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datapi.ApiClient.get_results" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datapi.ApiClient.get_results" title="Link to this definition">#</a></dt>
 <dd><p>Retrieve the results of a request.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>request_uid</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Request UID.</p>
+<dd class="field-odd"><p><strong>request_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Request ID.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="Results.html#datapi.Results" title="datapi.Results"><code class="xref py py-class docutils literal notranslate"><span class="pre">datapi.Results</span></code></a></p>
@@ -607,7 +586,6 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.ApiClient.apply_constraints"><code class="docutils literal notranslate"><span class="pre">datapi.ApiClient.apply_constraints()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.ApiClient.check_authentication"><code class="docutils literal notranslate"><span class="pre">datapi.ApiClient.check_authentication()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.ApiClient.download_results"><code class="docutils literal notranslate"><span class="pre">datapi.ApiClient.download_results()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.ApiClient.estimate_costs"><code class="docutils literal notranslate"><span class="pre">datapi.ApiClient.estimate_costs()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.ApiClient.get_collection"><code class="docutils literal notranslate"><span class="pre">datapi.ApiClient.get_collection()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.ApiClient.get_collections"><code class="docutils literal notranslate"><span class="pre">datapi.ApiClient.get_collections()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datapi.ApiClient.get_jobs"><code class="docutils literal notranslate"><span class="pre">datapi.ApiClient.get_jobs()</span></code></a></li>
@@ -664,7 +642,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.1.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>

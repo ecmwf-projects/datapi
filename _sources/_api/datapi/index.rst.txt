@@ -19,7 +19,6 @@ Classes
    /_api/datapi/Collection
    /_api/datapi/Collections
    /_api/datapi/Jobs
-   /_api/datapi/Process
    /_api/datapi/Remote
    /_api/datapi/Results
 
@@ -29,7 +28,6 @@ Classes
    datapi.Collection
    datapi.Collections
    datapi.Jobs
-   datapi.Process
    datapi.Remote
    datapi.Results
 

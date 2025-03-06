@@ -52,31 +52,17 @@ datapi.ApiClient
 
 
 
-   .. py:method:: download_results(request_uid, target = None)
+   .. py:method:: download_results(request_id, target = None)
 
       Download the results of a request.
 
-      :param request_uid: Request UID.
-      :type request_uid: :py:class:`str`
+      :param request_id: Request ID.
+      :type request_id: :py:class:`str`
       :param target: Target path. If None, download to the working directory.
       :type target: :py:class:`str` or :py:obj:`None`
 
       :returns: Path to the retrieved file.
       :rtype: :py:class:`str`
-
-
-
-   .. py:method:: estimate_costs(collection_id, request)
-
-      Estimate costs of the parameters in a request.
-
-      :param collection_id: Collection ID (e.g., ``"projections-cmip6"``).
-      :type collection_id: :py:class:`str`
-      :param request: Request parameters.
-      :type request: :py:class:`dict[str,Any]`
-
-      :returns: Dictionary of estimated costs.
-      :rtype: :py:class:`dict[str,Any]`
 
 
 
@@ -123,23 +109,23 @@ datapi.ApiClient
 
 
 
-   .. py:method:: get_remote(request_uid)
+   .. py:method:: get_remote(request_id)
 
       Retrieve the remote object of a request.
 
-      :param request_uid: Request UID.
-      :type request_uid: :py:class:`str`
+      :param request_id: Request ID.
+      :type request_id: :py:class:`str`
 
       :rtype: :py:class:`datapi.Remote`
 
 
 
-   .. py:method:: get_results(request_uid)
+   .. py:method:: get_results(request_id)
 
       Retrieve the results of a request.
 
-      :param request_uid: Request UID.
-      :type request_uid: :py:class:`str`
+      :param request_id: Request ID.
+      :type request_id: :py:class:`str`
 
       :rtype: :py:class:`datapi.Results`
 

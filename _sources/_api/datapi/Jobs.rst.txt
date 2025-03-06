@@ -30,11 +30,11 @@ datapi.Jobs
       Previous page.
 
 
-   .. py:property:: request_uids
+   .. py:property:: request_ids
       :type: list[str]
 
 
-      List of request UIDs.
+      List of request IDs.
 
 
    .. py:property:: url

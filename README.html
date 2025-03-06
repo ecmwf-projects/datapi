@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>datapi &#8212; datapi 0.2.1 documentation</title>
+    <title>datapi &#8212; datapi 0.3.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=37f418d5"></script>
+    <script src="_static/documentation_options.js?v=e259d695"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'README';</script>
@@ -49,7 +49,7 @@
     <link rel="prev" title="Welcome to datapi’s documentation!" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.2.1" />
+  <meta name="docsearch:version" content="0.3.0" />
   </head>
   
   
@@ -111,7 +111,7 @@
   
   
   
-    <p class="title logo__title">datapi 0.2.1 documentation</p>
+    <p class="title logo__title">datapi 0.3.0 documentation</p>
   
 </a></div>
     
@@ -357,44 +357,154 @@ key: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 </pre></div>
 </div>
-<p>Explore a collection:</p>
+<p>Retrieve data:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collection_id</span> <span class="o">=</span> <span class="s2">&quot;reanalysis-era5-pressure-levels&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_collection</span><span class="p">(</span><span class="n">collection_id</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">end_datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;product_type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;reanalysis&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;temperature&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2022&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;01&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;day&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;01&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;00:00&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;pressure_level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;1000&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;data_format&quot;</span><span class="p">:</span> <span class="s2">&quot;grib&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;download_format&quot;</span><span class="p">:</span> <span class="s2">&quot;unarchived&quot;</span>
+<span class="gp">... </span>    <span class="p">}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">collection_id</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;target_1.grib&quot;</span><span class="p">)</span>  <span class="c1"># blocks</span>
+<span class="go">&#39;target_1.grib&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">collection_id</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>  <span class="c1"># doesn&#39;t block</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span>
+<span class="go">Remote(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;target_2.grib&quot;</span><span class="p">)</span>  <span class="c1"># blocks</span>
+<span class="go">&#39;target_2.grib&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit_and_wait_on_results</span><span class="p">(</span><span class="n">collection_id</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>  <span class="c1"># blocks</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span>
+<span class="go">Results(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;target_3.grib&quot;</span><span class="p">)</span>
+<span class="go">&#39;target_3.grib&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">download_results</span><span class="p">(</span><span class="n">remote</span><span class="o">.</span><span class="n">request_id</span><span class="p">,</span> <span class="s2">&quot;target_4.grib&quot;</span><span class="p">)</span>  <span class="c1"># blocks</span>
+<span class="go">&#39;target_4.grib&#39;</span>
+
+</pre></div>
+</div>
+<p>List all collection IDs sorted by last update:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collections</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_collections</span><span class="p">(</span><span class="n">sortby</span><span class="o">=</span><span class="s2">&quot;update&quot;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection_ids</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">collections</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># Loop over pages</span>
+<span class="gp">... </span>    <span class="n">collection_ids</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">collection_ids</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">collections</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">next</span>  <span class="c1"># Move to the next page</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection_ids</span>
+<span class="go">[...]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection_id</span> <span class="ow">in</span> <span class="n">collection_ids</span>
+<span class="go">True</span>
+
+</pre></div>
+</div>
+<p>Explore a collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_collection</span><span class="p">(</span><span class="n">collection_id</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">collection_id</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">title</span>
+<span class="go">&#39;...&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">description</span>
+<span class="go">&#39;...&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">published_at</span>
+<span class="go">datetime.datetime(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">updated_at</span>
 <span class="go">datetime.datetime(...)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
-<span class="gp">... </span>    <span class="s2">&quot;product_type&quot;</span><span class="p">:</span> <span class="s2">&quot;reanalysis&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="s2">&quot;2022&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="s2">&quot;01&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;day&quot;</span><span class="p">:</span> <span class="s2">&quot;01&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;pressure_level&quot;</span><span class="p">:</span> <span class="s2">&quot;1000&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00&quot;</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">apply_constraints</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">begin_datetime</span>
+<span class="go">datetime.datetime(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">end_datetime</span>
+<span class="go">datetime.datetime(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">bbox</span>
+<span class="go">(...)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="go">Remote(...)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">apply_constraints</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 <span class="go">{...}</span>
 
 </pre></div>
 </div>
-<p>Retrieve data:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">collection_id</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;tmp1-era5.grib&quot;</span><span class="p">)</span>  <span class="c1"># blocks</span>
-<span class="go">&#39;tmp1-era5.grib&#39;</span>
+<p>Interact with results:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">remote</span><span class="o">.</span><span class="n">request_id</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">collection_id</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>  <span class="c1"># doesn&#39;t block</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">request_uid</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="o">.</span><span class="n">content_length</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="o">.</span><span class="n">content_type</span>
+<span class="go">&#39;application/x-grib&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="o">.</span><span class="n">location</span>
 <span class="go">&#39;...&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">status</span>
-<span class="go">&#39;...&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;tmp2-era5.grib&quot;</span><span class="p">)</span>  <span class="c1"># blocks</span>
-<span class="go">&#39;tmp2-era5.grib&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;target_5.grib&quot;</span><span class="p">)</span>
+<span class="go">&#39;target_5.grib&#39;</span>
+
+</pre></div>
+</div>
+<p>List all successful jobs, sorted by newest first:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jobs</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_jobs</span><span class="p">(</span><span class="n">sortby</span><span class="o">=</span><span class="s2">&quot;-created&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s2">&quot;successful&quot;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request_ids</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">jobs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># Loop over pages</span>
+<span class="gp">... </span>    <span class="n">request_ids</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">jobs</span><span class="o">.</span><span class="n">request_ids</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span><span class="o">.</span><span class="n">next</span>  <span class="c1"># Move to the next page</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request_ids</span>
+<span class="go">[...]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">request_id</span> <span class="ow">in</span> <span class="n">request_ids</span>
+<span class="go">True</span>
 
 </pre></div>
 </div>
 <p>Interact with a previously submitted job:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_remote</span><span class="p">(</span><span class="n">remote</span><span class="o">.</span><span class="n">request_uid</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_remote</span><span class="p">(</span><span class="n">remote</span><span class="o">.</span><span class="n">request_id</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">collection_id</span> <span class="o">==</span> <span class="n">collection_id</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">request</span> <span class="o">==</span> <span class="n">request</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">status</span>
+<span class="go">&#39;successful&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">results_ready</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">created_at</span>
+<span class="go">datetime.datetime(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">started_at</span>
+<span class="go">datetime.datetime(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">finished_at</span>
+<span class="go">datetime.datetime(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">updated_at</span> <span class="o">==</span> <span class="n">remote</span><span class="o">.</span><span class="n">finished_at</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;target_6.grib&quot;</span><span class="p">)</span>
+<span class="go">&#39;target_6.grib&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
+<span class="go">Results(...)</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 <span class="go">{...}</span>
+
+</pre></div>
+</div>
+<p>Apply constraints and find the number of available days in a given month:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">month</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="s2">&quot;2000&quot;</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="s2">&quot;02&quot;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">constrained_request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">apply_constraints</span><span class="p">(</span><span class="n">collection_id</span><span class="p">,</span> <span class="n">month</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">constrained_request</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">])</span>
+<span class="go">29</span>
 
 </pre></div>
 </div>
@@ -535,7 +645,7 @@ key: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.1.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>
