@@ -178,7 +178,7 @@ True
 'application/x-grib'
 >>> results.location
 '...'
->>> results.download('target_4.grib')
+>>> results.download("target_4.grib")
 'target_4.grib'
 
 ```
@@ -196,7 +196,7 @@ Apply constraints and find the number of available days in a given month:
 Utility methods:
 
 ```python
->>> client.download_results(request_ids[1], 'target_5.grib')
+>>> client.download_results(request_ids[1], "target_5.grib")
 'target_5.grib'
 
 ```
