@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>datapi &#8212; datapi 0.3.0 documentation</title>
+    <title>datapi &#8212; datapi 0.3.1 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=e259d695"></script>
+    <script src="_static/documentation_options.js?v=4621528c"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'README';</script>
@@ -49,7 +49,7 @@
     <link rel="prev" title="Welcome to datapi’s documentation!" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.3.0" />
+  <meta name="docsearch:version" content="0.3.1" />
   </head>
   
   
@@ -111,7 +111,7 @@
   
   
   
-    <p class="title logo__title">datapi 0.3.0 documentation</p>
+    <p class="title logo__title">datapi 0.3.1 documentation</p>
   
 </a></div>
     
@@ -383,7 +383,7 @@ key: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 <span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit_and_wait_on_results</span><span class="p">(</span><span class="n">collection_id</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>  <span class="c1"># blocks</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">results</span>
 <span class="go">Results(...)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;target_3.grib&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;target_3.grib&quot;</span><span class="p">)</span>
 <span class="go">&#39;target_3.grib&#39;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">download_results</span><span class="p">(</span><span class="n">remote</span><span class="o">.</span><span class="n">request_id</span><span class="p">,</span> <span class="s2">&quot;target_4.grib&quot;</span><span class="p">)</span>  <span class="c1"># blocks</span>
