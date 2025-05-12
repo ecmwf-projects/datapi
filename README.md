@@ -2,7 +2,8 @@
 
 ECMWF Software EnginE (ESEE) Data Stores API Python Client.
 
-Technical documentation: https://ecmwf-projects.github.io/datapi/
+> [!WARNING]
+> Deprecated in favour of https://github.com/ecmwf/ecmwf-datastores-client
 
 ## Installation
 
